@@ -37,6 +37,7 @@ organization = "PowerDNS"
 
 Due to a combination of unfortunate wording in earlier documents, aggressive use of NSEC(3) records may deny names far beyond the intended lifetime of a denial.
 This document changes the definition of the NSEC(3) TTL to correct that situation.
+This document updates RFC 4034 and RFC 5155. 
 
 {mainmatter}
 
@@ -67,7 +68,7 @@ This text, while referring to RFC2308, can cause NSEC records to have much highe
 
 [@!RFC8198] section 5.4 tries to correct this:
 
-> Section 5 of [RFC2308] also states that a negative cache entry TTL is taken from the minimum of the SOA.MINIMUM field and SOA's TTL.  This can be less than the TTL of an NSEC or NSEC3 record, since their TTL is equal to the SOA.MINIMUM field (see [RFC4035], Section 2.3 and [RFC5155], Section 3).
+> Section 5 of [RFC2308] also states that a negative cache entry TTL is taken from the minimum of the SOA.MINIMUM field and SOA's TTL.  This can be less than the TTL of an NSEC or NSEC3 record, since their TTL is equal to the SOA.MINIMUM field (see [@!RFC4035], Section 2.3 and [RFC5155], Section 3).
 >
 > A resolver that supports aggressive use of NSEC and NSEC3 SHOULD reduce the TTL of NSEC and NSEC3 records to match the SOA.MINIMUM field in the authority section of a negative response, if SOA.MINIMUM is smaller.
 
@@ -92,7 +93,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 # NSEC(3) TTL changes
 
-## In RFC4034
+## Updates to RFC4034
 
 Where [@!RFC4034] says:
 
@@ -102,7 +103,7 @@ This is updated to say:
 
 > The NSEC RR MUST have the same TTL value as the minimum of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
 
-## In RFC5155
+## Updates to RFC5155
 
 Where [@!RFC5155] says:
 
