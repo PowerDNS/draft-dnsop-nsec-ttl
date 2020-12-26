@@ -3,7 +3,7 @@ title = "NSEC(3) TTLs and NSEC Aggressive Use"
 abbrev = "nsec-ttl"
 docName = "draft-vandijk-dnsop-nsec-ttl-00+"
 category = "std"
-updates = [4034, 5155]
+updates = [4034, 4035, 5155]
 
 ipr = "trust200902"
 area = "General"
@@ -37,7 +37,7 @@ organization = "PowerDNS"
 
 Due to a combination of unfortunate wording in earlier documents, aggressive use of NSEC(3) records may deny names far beyond the intended lifetime of a denial.
 This document changes the definition of the NSEC(3) TTL to correct that situation.
-This document updates RFC 4034 and RFC 5155. 
+This document updates RFC 4034, RFC 4035, and RFC 5155.
 
 {mainmatter}
 
@@ -50,6 +50,8 @@ Earlier notes on this:
 * https://indico.dns-oarc.net/event/29/sessions/98/#20181013 
 * https://lists.dns-oarc.net/pipermail/dns-operations/2018-April/thread.html#17420
 * https://lists.dns-oarc.net/pipermail/dns-operations/2018-March/017416.html
+
+This document lives [on GitHub](https://github.com/PowerDNS/draft-dnsop-nsec-ttl); proposed text and editorial changes are very much welcomed there, but any functional changes should always first be discussed on the IETF DNSOP WG mailing list.
 
 ]
 
@@ -83,10 +85,6 @@ Negative responses from this zone have a 900 second TTL, but the NSEC3 records i
 If a resolver were to use those NSEC3s aggressively, they would be considered valid for a day, instead of the intended 15 minutes.
 (Note that, because .com uses opt-out NSEC3, such aggressive use would not in fact apply to this zone - it is merely used as a very visible example here.)
 
-# Document work
-
-This document lives [on GitHub](https://github.com/PowerDNS/draft-dnsop-nsec-ttl); proposed text and editorial changes are very much welcomed there, but any functional changes should always first be discussed on the IETF DNSOP WG mailing list.
-
 # Conventions and Definitions
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 [@!RFC2119] [@RFC8174] when, and only when, they appear in all capitals, as shown here.
@@ -102,6 +100,16 @@ Where [@!RFC4034] says:
 This is updated to say:
 
 > The NSEC RR MUST have the same TTL value as the minimum of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
+
+## Updates to RFC4035
+
+Where [@!RFC4035] says:
+
+> The TTL value for any NSEC RR SHOULD be the same as the minimum TTL value field in the zone SOA RR.
+
+This is updated to say:
+
+> The TTL value for any NSEC RR MUST be the same TTL value as the minimum of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
 
 ## Updates to RFC5155
 
@@ -123,15 +131,11 @@ That way, the TTL used for aggressive NSEC use matches the SOA TTL for negative 
 An attacker can prevent future records from appearing in a cache by seeding the cache with queries that cause NSEC(3) responses to be cached, for aggressive use purposes.
 This document reduces the impact of that attack in cases where the NSEC(3) TTL is higher than the zone operator intended.
 
-# Implementation Status
-
-[RFC Editor: please remove this section before publication]
-
-Implemented in PowerDNS Authoritative Server 4.3.0 https://doc.powerdns.com/authoritative/dnssec/operational.html?highlight=ttl#some-notes-on-ttl-usage .
-
 # IANA Considerations
 
-IANA is requested to add a reference to this document in the DNS Resource Record Types registry, for the NSEC and NSEC3 types.
+IANA is requested to add a reference to this document in the "Resource Record
+(RR) TYPEs" subregistry of the "Domain Name System (DNS) Parameters" registry, for the NSEC and NSEC3 types.
+
 
 # Acknowledgements
 
@@ -140,6 +144,12 @@ Ralph Dolmans helpfully pointed out that fixing this in RFC8198 is only possible
 Warren Kumari gracefully acknowledged that the current behaviour of RFC8198, in context of the NSEC TTL defined in RFC4034, is not the intended behaviour.
 
 {backmatter}
+
+# Implementation Status
+
+[RFC Editor: please remove this section before publication]
+
+Implemented in PowerDNS Authoritative Server 4.3.0 https://doc.powerdns.com/authoritative/dnssec/operational.html?highlight=ttl#some-notes-on-ttl-usage .
 
 # Document history
 
