@@ -85,6 +85,15 @@ Negative responses from this zone have a 900 second TTL, but the NSEC3 records i
 If a resolver were to use those NSEC3s aggressively, they would be considered valid for a day, instead of the intended 15 minutes.
 (Note that, because .com uses opt-out NSEC3, such aggressive use would not in fact apply to this zone - it is merely used as a very visible example here.)
 
+Instead of updating four documents, it would have been preferable to update it in one.
+[@RFC8198] says:
+
+> With DNSSEC and aggressive use of DNSSEC-validated cache, the TTL of the NSEC/NSEC3 record and the SOA.MINIMUM field are the authoritative statement of how quickly a name can start working within a zone.
+
+Here, the SOA.MINIMUM field cannot be changed to "the minimum of the SOA.MINIMUM field and the SOA TTL" because the resolver may not have the SOA RRset in cache.
+Because of that, this document cannot get away with updating just [@RFC8198].
+However, if authoritative servers follow the updates from this document, this should not make a difference, as the TTL of the NSEC/NSEC3 record is already set to the minimum value.
+
 # Conventions and Definitions
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 [@!RFC2119] [@RFC8174] when, and only when, they appear in all capitals, as shown here.
@@ -142,6 +151,8 @@ IANA is requested to add a reference to this document in the "Resource Record
 Ralph Dolmans helpfully pointed out that fixing this in RFC8198 is only possible for negative (NXDOMAIN/NoData NOERROR) responses, and not for wildcard responses.
 
 Warren Kumari gracefully acknowledged that the current behaviour of RFC8198, in context of the NSEC TTL defined in RFC4034, is not the intended behaviour.
+
+Matthijs Mekking provided additional text explaining why this document cannot simply update RFC8198.
 
 {backmatter}
 
