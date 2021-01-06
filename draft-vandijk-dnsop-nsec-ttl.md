@@ -151,5 +151,7 @@ Warren Kumari gracefully acknowledged that the current behaviour of RFC8198, in 
 
 Implemented in PowerDNS Authoritative Server 4.3.0 https://doc.powerdns.com/authoritative/dnssec/operational.html?highlight=ttl#some-notes-on-ttl-usage .
 
+Implemented in BIND 9.16 and up, to be released early 2021 https://mailarchive.ietf.org/arch/msg/dnsop/ga41J2PPUbmc21--dqf3i7_IY6M .
+
 # Document history
 
