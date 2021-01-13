@@ -158,6 +158,8 @@ Warren Kumari gracefully acknowledged that the current behaviour of RFC8198, in 
 
 Matthijs Mekking provided additional text explaining why this document cannot simply update RFC8198.
 
+Vladimir Cunat pointed out that the effect wildcards should be made explicit.
+
 {backmatter}
 
 # Implementation Status
