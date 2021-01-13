@@ -150,10 +150,6 @@ This document reduces the impact of that attack in cases where the NSEC(3) TTL i
 
 IANA is requested to add a reference to this document in the "Resource Record (RR) TYPEs" subregistry of the "Domain Name System (DNS) Parameters" registry, for the NSEC and NSEC3 types.
 
-# Acknowledgements
-
-Ralph Dolmans helpfully pointed out that fixing this in RFC8198 is only possible for negative (NXDOMAIN/NoData NOERROR) responses, and not for wildcard responses. Warren Kumari gracefully acknowledged that the current behaviour of RFC8198, in context of the NSEC TTL defined in RFC4034, is not the intended behaviour. Matthijs Mekking provided additional text explaining why this document cannot simply update RFC8198. Vladimir Cunat pointed out that the effect wildcards should be made explicit.
-
 {backmatter}
 
 # Implementation Status
@@ -166,3 +162,9 @@ Implemented in BIND 9.16 and up, to be released early 2021 https://mailarchive.i
 
 # Document history
 
+[RFC editor: please remove this section before publication.]
+
+{numbered="false"}
+# Acknowledgements
+
+Ralph Dolmans helpfully pointed out that fixing this in RFC8198 is only possible for negative (NXDOMAIN/NoData NOERROR) responses, and not for wildcard responses. Warren Kumari gracefully acknowledged that the current behaviour of RFC8198, in context of the NSEC TTL defined in RFC4034, is not the intended behaviour. Matthijs Mekking provided additional text explaining why this document cannot simply update RFC8198. Vladimir Cunat pointed out that the effect wildcards should be made explicit.
