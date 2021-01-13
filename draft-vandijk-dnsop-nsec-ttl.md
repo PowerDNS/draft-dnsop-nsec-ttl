@@ -131,7 +131,7 @@ Here, the SOA.MINIMUM field cannot be changed to "the minimum of the SOA.MINIMUM
 Because of that, this document cannot get away with updating just [@RFC8198].
 However, if authoritative servers follow the updates from this document, this should not make a difference, as the TTL of the NSEC/NSEC3 record is already set to the minimum value.
 
-## Zone operator guidance
+# Zone Operator Considerations
 
 If signers & DNS servers for a zone cannot immediately be updated to conform to this document, zone operators are encouraged to consider setting their SOA record TTL and the SOA MINIMUM field to the same value.
 That way, the TTL used for aggressive NSEC use matches the SOA TTL for negative responses.
