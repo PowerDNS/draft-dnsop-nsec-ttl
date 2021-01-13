@@ -84,15 +84,6 @@ The SOA record has a 900 second TTL, and a 86400 MINIMUM TTL.
 Negative responses from this zone have a 900 second TTL, but the NSEC(3) records in those negative responses have a 86400 TTL.
 If a resolver were to use those NSEC3s aggressively, they would be considered valid for a day, instead of the intended 15 minutes.
 
-Instead of updating four documents, it would have been preferable to update it in one.
-[@RFC8198] says:
-
-> With DNSSEC and aggressive use of DNSSEC-validated cache, the TTL of the NSEC/NSEC3 record and the SOA.MINIMUM field are the authoritative statement of how quickly a name can start working within a zone.
-
-Here, the SOA.MINIMUM field cannot be changed to "the minimum of the SOA.MINIMUM field and the SOA TTL" because the resolver may not have the SOA RRset in cache.
-Because of that, this document cannot get away with updating just [@RFC8198].
-However, if authoritative servers follow the updates from this document, this should not make a difference, as the TTL of the NSEC/NSEC3 record is already set to the minimum value.
-
 # Conventions and Definitions
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 [@!RFC2119] [@RFC8174] when, and only when, they appear in all capitals, as shown here.
@@ -128,6 +119,17 @@ Where [@!RFC5155] says:
 This is updated to say:
 
 > The NSEC3 RR MUST have the same TTL value as the minimum of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
+
+## No updates to RFC8198
+
+Instead of updating four documents, it would have been preferable to update it in one.
+[@RFC8198] says:
+
+> With DNSSEC and aggressive use of DNSSEC-validated cache, the TTL of the NSEC/NSEC3 record and the SOA.MINIMUM field are the authoritative statement of how quickly a name can start working within a zone.
+
+Here, the SOA.MINIMUM field cannot be changed to "the minimum of the SOA.MINIMUM field and the SOA TTL" because the resolver may not have the SOA RRset in cache.
+Because of that, this document cannot get away with updating just [@RFC8198].
+However, if authoritative servers follow the updates from this document, this should not make a difference, as the TTL of the NSEC/NSEC3 record is already set to the minimum value.
 
 ## Zone operator guidance
 
