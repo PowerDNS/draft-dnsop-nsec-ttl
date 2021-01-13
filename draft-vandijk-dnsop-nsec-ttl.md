@@ -148,9 +148,7 @@ This document reduces the impact of that attack in cases where the NSEC(3) TTL i
 
 # IANA Considerations
 
-IANA is requested to add a reference to this document in the "Resource Record
-(RR) TYPEs" subregistry of the "Domain Name System (DNS) Parameters" registry, for the NSEC and NSEC3 types.
-
+IANA is requested to add a reference to this document in the "Resource Record (RR) TYPEs" subregistry of the "Domain Name System (DNS) Parameters" registry, for the NSEC and NSEC3 types.
 
 # Acknowledgements
 
