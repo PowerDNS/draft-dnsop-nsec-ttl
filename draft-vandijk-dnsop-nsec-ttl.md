@@ -136,6 +136,11 @@ However, if authoritative servers follow the updates from this document, this sh
 If signers & DNS servers for a zone cannot immediately be updated to conform to this document, zone operators are encouraged to consider setting their SOA record TTL and the SOA MINIMUM field to the same value.
 That way, the TTL used for aggressive NSEC use matches the SOA TTL for negative responses.
 
+## A Note On Wildcards
+
+Validating resolvers consider an expanded wildcard valid for the wildcard's TTL, capped by the TTLs of the NSEC(3) proof that shows that the wildcard expansion is legal.
+Thus, changing the TTL of NSEC(3) records (explicitly, or by implementation of this document, implicitly) might affect (shorten) the lifetime of wildcards.
+
 # Security Considerations
 
 An attacker can prevent future records from appearing in a cache by seeding the cache with queries that cause NSEC(3) responses to be cached, for aggressive use purposes.
