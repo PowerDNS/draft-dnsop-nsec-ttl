@@ -76,14 +76,13 @@ This text, while referring to RFC2308, can cause NSEC records to have much highe
 
 But the NSEC(3) RRs should, per RFC4034, already be at the MINIMUM TTL, which means this advice would never actually change the TTL used for the NSEC(3) RRs.
 
-As a concrete example, the `.com` SOA currently looks like this:
+As a theoretical exercise, consider a TLD `.example` with a SOA like this:
 
-`com.			900	IN	SOA	a.gtld-servers.net. nstld.verisign-grs.com. 1606158464 1800 900 604800 86400`
+`example.    900 IN  SOA primary.example. hostmaster.example. 1 1800 900 604800 86400`
 
 The SOA record has a 900 second TTL, and a 86400 MINIMUM TTL.
-Negative responses from this zone have a 900 second TTL, but the NSEC3 records in those negative responses have a 86400 TTL.
+Negative responses from this zone have a 900 second TTL, but the NSEC(3) records in those negative responses have a 86400 TTL.
 If a resolver were to use those NSEC3s aggressively, they would be considered valid for a day, instead of the intended 15 minutes.
-(Note that, because .com uses opt-out NSEC3, such aggressive use would not in fact apply to this zone - it is merely used as a very visible example here.)
 
 Instead of updating four documents, it would have been preferable to update it in one.
 [@RFC8198] says:
