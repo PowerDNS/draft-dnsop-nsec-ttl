@@ -164,6 +164,15 @@ Implemented in BIND 9.16 and up, to be released early 2021 https://mailarchive.i
 
 [RFC editor: please remove this section before publication.]
 
+From draft-vandijk-dnsop-nsec-ttl-00 to draft-ietf-dnsop-nsec-ttl-00:
+
+* document was adopted
+* various minor editorial changes
+* now also updates 4035
+* use .example instead of .com for the example
+* more words on 8198
+* a note on wildcards
+
 {numbered="false"}
 # Acknowledgements
 
