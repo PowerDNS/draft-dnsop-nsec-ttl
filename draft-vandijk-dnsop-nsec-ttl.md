@@ -160,6 +160,8 @@ Implemented in PowerDNS Authoritative Server 4.3.0 https://doc.powerdns.com/auth
 
 Implemented in BIND 9.16 and up, to be released early 2021 https://mailarchive.ietf.org/arch/msg/dnsop/ga41J2PPUbmc21--dqf3i7_IY6M .
 
+Implemented in Knot DNS 3.1, to be released in 2021 https://gitlab.nic.cz/knot/knot-dns/-/merge_requests/1219 .
+
 # Document history
 
 [RFC editor: please remove this section before publication.]
