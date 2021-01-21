@@ -122,7 +122,7 @@ This is updated to say:
 
 ## No updates to RFC8198
 
-Instead of updating four documents, it would have been preferable to update it in one.
+Instead of updating three documents, it would have been preferable to update it one.
 [@RFC8198] says:
 
 > With DNSSEC and aggressive use of DNSSEC-validated cache, the TTL of the NSEC/NSEC3 record and the SOA.MINIMUM field are the authoritative statement of how quickly a name can start working within a zone.
