@@ -55,7 +55,7 @@ This document lives [on GitHub](https://github.com/PowerDNS/draft-dnsop-nsec-ttl
 
 ]
 
-[@!RFC2308] defines that the SOA TTL to be used in negative answers (NXDOMAIN, NoData NOERROR) is 
+[@!RFC2308] defines that the SOA TTL to be used in negative answers (NXDOMAIN, NODATA) is 
 
 > the minimum of the MINIMUM field of the SOA record and the TTL of the SOA itself
 
@@ -178,4 +178,4 @@ From draft-vandijk-dnsop-nsec-ttl-00 to draft-ietf-dnsop-nsec-ttl-00:
 {numbered="false"}
 # Acknowledgements
 
-Ralph Dolmans helpfully pointed out that fixing this in RFC8198 is only possible for negative (NXDOMAIN/NoData NOERROR) responses, and not for wildcard responses. Warren Kumari gracefully acknowledged that the current behaviour of RFC8198, in context of the NSEC TTL defined in RFC4034, is not the intended behaviour. Matthijs Mekking provided additional text explaining why this document cannot simply update RFC8198. Vladimir Cunat pointed out that the effect on wildcards should be made explicit. Paul Hoffman provided helpful hints as a native speaker.
+Ralph Dolmans helpfully pointed out that fixing this in RFC8198 is only possible for negative (NXDOMAIN/NODATA) responses, and not for wildcard responses. Warren Kumari gracefully acknowledged that the current behaviour of RFC8198, in context of the NSEC TTL defined in RFC4034, is not the intended behaviour. Matthijs Mekking provided additional text explaining why this document cannot simply update RFC8198. Vladimir Cunat pointed out that the effect on wildcards should be made explicit. Paul Hoffman provided helpful hints as a native speaker.
