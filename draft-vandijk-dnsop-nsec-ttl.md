@@ -98,7 +98,7 @@ Where [@!RFC4034] says:
 
 This is updated to say:
 
-> The NSEC RR MUST have the same TTL value as the minimum of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
+> The NSEC RR MUST have the same TTL value as the lesser of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
 
 ## Updates to RFC4035
 
@@ -108,7 +108,7 @@ Where [@!RFC4035] says:
 
 This is updated to say:
 
-> The TTL value for any NSEC RR MUST be the same TTL value as the minimum of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
+> The TTL value for any NSEC RR MUST be the same TTL value as the lesser of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
 
 ## Updates to RFC5155
 
@@ -118,7 +118,7 @@ Where [@!RFC5155] says:
 
 This is updated to say:
 
-> The NSEC3 RR MUST have the same TTL value as the minimum of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
+> The NSEC3 RR MUST have the same TTL value as the lesser of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
 
 ## No updates to RFC8198
 
@@ -127,7 +127,7 @@ Instead of updating three documents, it would have been preferable to update it 
 
 > With DNSSEC and aggressive use of DNSSEC-validated cache, the TTL of the NSEC/NSEC3 record and the SOA.MINIMUM field are the authoritative statement of how quickly a name can start working within a zone.
 
-Here, the SOA.MINIMUM field cannot be changed to "the minimum of the SOA.MINIMUM field and the SOA TTL" because the resolver may not have the SOA RRset in cache.
+Here, the SOA.MINIMUM field cannot be changed to "the minimum/lesser of the SOA.MINIMUM field and the SOA TTL" because the resolver may not have the SOA RRset in cache.
 Because of that, this document cannot get away with updating just [@RFC8198].
 However, if authoritative servers follow the updates from this document, this should not make a difference, as the TTL of the NSEC/NSEC3 record is already set to the minimum value.
 
@@ -178,4 +178,4 @@ From draft-vandijk-dnsop-nsec-ttl-00 to draft-ietf-dnsop-nsec-ttl-00:
 {numbered="false"}
 # Acknowledgements
 
-Ralph Dolmans helpfully pointed out that fixing this in RFC8198 is only possible for negative (NXDOMAIN/NoData NOERROR) responses, and not for wildcard responses. Warren Kumari gracefully acknowledged that the current behaviour of RFC8198, in context of the NSEC TTL defined in RFC4034, is not the intended behaviour. Matthijs Mekking provided additional text explaining why this document cannot simply update RFC8198. Vladimir Cunat pointed out that the effect on wildcards should be made explicit.
+Ralph Dolmans helpfully pointed out that fixing this in RFC8198 is only possible for negative (NXDOMAIN/NoData NOERROR) responses, and not for wildcard responses. Warren Kumari gracefully acknowledged that the current behaviour of RFC8198, in context of the NSEC TTL defined in RFC4034, is not the intended behaviour. Matthijs Mekking provided additional text explaining why this document cannot simply update RFC8198. Vladimir Cunat pointed out that the effect on wildcards should be made explicit. Paul Hoffman provided helpful hints as a native speaker.
