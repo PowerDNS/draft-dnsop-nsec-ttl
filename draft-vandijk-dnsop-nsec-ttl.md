@@ -175,6 +175,11 @@ From draft-vandijk-dnsop-nsec-ttl-00 to draft-ietf-dnsop-nsec-ttl-00:
 * more words on 8198
 * a note on wildcards
 
+From draft-ietf-dnsop-nsec-ttl-00 to draft-ietf-dnsop-nsec-ttl-01:
+
+* various wording improvements
+* added Implementation note from Knot, expanded the BIND one with the GitLab MR URL
+
 {numbered="false"}
 # Acknowledgements
 
