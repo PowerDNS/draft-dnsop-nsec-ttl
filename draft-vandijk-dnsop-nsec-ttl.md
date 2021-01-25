@@ -179,6 +179,7 @@ From draft-ietf-dnsop-nsec-ttl-00 to draft-ietf-dnsop-nsec-ttl-01:
 
 * various wording improvements
 * added Implementation note from Knot, expanded the BIND one with the GitLab MR URL
+* reduced requirement level from MUST to SHOULD, like the original texts
 
 {numbered="false"}
 # Acknowledgements
