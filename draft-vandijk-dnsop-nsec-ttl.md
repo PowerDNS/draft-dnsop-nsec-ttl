@@ -120,6 +120,14 @@ This is updated to say:
 
 > The NSEC3 RR SHOULD have the same TTL value as the lesser of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
 
+Where [@!RFC5155] says:
+
+> o  The TTL value for any NSEC3 RR SHOULD be the same as the minimum TTL value field in the zone SOA RR.
+
+This is updated to say:
+
+> o  The TTL value for any NSEC3 RR SHOULD be the same as the lesser of the MINIMUM field of the zone SOA RR and the TTL of the zone SOA RR itself.
+
 ## No updates to RFC8198
 
 Instead of updating three documents, it would have been preferable to update one.
