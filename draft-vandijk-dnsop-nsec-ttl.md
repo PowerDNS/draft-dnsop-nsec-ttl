@@ -55,7 +55,7 @@ This document lives [on GitHub](https://github.com/PowerDNS/draft-dnsop-nsec-ttl
 
 ]
 
-[@!RFC2308] defines that the TTL of the SOA record that nust be returned in negative answers (NXDOMAIN or NODATA):
+[@!RFC2308] defines the TTL of the SOA record that must be returned in negative answers (NXDOMAIN or NODATA):
 
 ~~~
    The TTL of this
