@@ -55,11 +55,18 @@ This document lives [on GitHub](https://github.com/PowerDNS/draft-dnsop-nsec-ttl
 
 ]
 
-[@!RFC2308] defines that the SOA TTL to be used in negative answers (NXDOMAIN or NODATA) is 
+[@!RFC2308] defines that the TTL of the SOA record that nust be returned in negative answers (NXDOMAIN or NODATA):
 
-> the minimum of the MINIMUM field of the SOA record and the TTL of the SOA itself
+~~~
+   The TTL of this
+   record is set from the minimum of the MINIMUM field of the SOA record
+   and the TTL of the SOA itself, and indicates how long a resolver may
+   cache the negative answer.
+~~~
 
-Thus, if the TTL of the SOA in the zone is lower than the SOA MINIMUM value (the last number in a SOA record), the negative TTL for that zone is lower than the SOA MINIMUM value.
+Thus, if the TTL of the SOA in the zone is lower than the SOA MINIMUM value (the last number in a SOA record),
+the authoritative server sends that lower value as the TTL in the returned SOA record.
+The resolver always uses the TTL of the returned SOA RRset value when setting the negative TTL in its cache.
 
 However, [@!RFC4034] section 4 has this unfortunate text:
 
@@ -98,7 +105,7 @@ Where [@!RFC4034] says:
 
 This is updated to say:
 
-> The NSEC RR SHOULD have the same TTL value as the lesser of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
+> The TTL in the NSEC RR that is returned SHOULD be the lesser of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
 
 ## Updates to RFC4035
 
@@ -108,7 +115,7 @@ Where [@!RFC4035] says:
 
 This is updated to say:
 
-> The TTL value for any NSEC RR SHOULD be the same TTL value as the lesser of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
+> The TTL in the NSEC RR that is returned SHOULD be the lesser of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
 
 ## Updates to RFC5155
 
@@ -118,7 +125,7 @@ Where [@!RFC5155] says:
 
 This is updated to say:
 
-> The NSEC3 RR SHOULD have the same TTL value as the lesser of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
+> he TTL in the NSEC3 RR that is returned SHOULD be he lesser of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
 
 Where [@!RFC5155] says:
 
@@ -126,7 +133,7 @@ Where [@!RFC5155] says:
 
 This is updated to say:
 
-> o  The TTL value for any NSEC3 RR SHOULD be the same as the lesser of the MINIMUM field of the zone SOA RR and the TTL of the zone SOA RR itself.
+> o  The TTL value for any NSEC3 RR SHOULD be the lesser of the MINIMUM field of the zone SOA RR and the TTL of the zone SOA RR itself.
 
 ## No updates to RFC8198
 
