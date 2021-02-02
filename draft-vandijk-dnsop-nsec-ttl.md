@@ -105,7 +105,7 @@ Where [@!RFC4034] says:
 
 This is updated to say:
 
-> The TTL in the NSEC RR that is returned SHOULD be the lesser of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
+> The TTL of the NSEC RR that is returned SHOULD be the lesser of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
 
 ## Updates to RFC4035
 
