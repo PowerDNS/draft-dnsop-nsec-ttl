@@ -64,9 +64,9 @@ This document lives [on GitHub](https://github.com/PowerDNS/draft-dnsop-nsec-ttl
    cache the negative answer.
 ~~~
 
-Thus, if the TTL of the SOA in the zone is lower than the SOA MINIMUM value (the last number in a SOA record),
-the authoritative server sends that lower value as the TTL in the returned SOA record.
-The resolver always uses the TTL of the returned SOA RRset value when setting the negative TTL in its cache.
+Thus, if the TTL of the SOA in the zone is lower than the SOA MINIMUM value (the last number in the SOA record),
+the authoritative server sends that lower value as the TTL of the returned SOA record.
+The resolver always uses the TTL of the returned SOA record when setting the negative TTL in its cache.
 
 However, [@!RFC4034] section 4 has this unfortunate text:
 
