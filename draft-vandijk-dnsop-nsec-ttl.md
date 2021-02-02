@@ -1,7 +1,7 @@
 %%%
 title = "NSEC(3) TTLs and NSEC Aggressive Use"
 abbrev = "nsec-ttl"
-docName = "draft-ietf-dnsop-nsec-ttl-02"
+docName = "draft-ietf-dnsop-nsec-ttl-02+"
 category = "std"
 updates = [4034, 4035, 5155]
 
@@ -12,7 +12,7 @@ keyword = ["Internet-Draft"]
 
 [seriesInfo]
 name = "Internet-Draft"
-value = "draft-ietf-dnsop-nsec-ttl-02"
+value = "draft-ietf-dnsop-nsec-ttl-02+"
 stream = "IETF"
 status = "standard"
 
@@ -188,6 +188,10 @@ From draft-ietf-dnsop-nsec-ttl-00 to draft-ietf-dnsop-nsec-ttl-01:
 * various wording improvements
 * added Implementation note from Knot, expanded the BIND one with the GitLab MR URL
 * reduced requirement level from MUST to SHOULD, like the original texts
+
+From draft-ietf-dnsop-nsec-ttl-00 to draft-ietf-dnsop-nsec-ttl-02:
+
+* updated the second bit of wrong text in 5155
 
 {numbered="false"}
 # Acknowledgements
