@@ -36,7 +36,7 @@ organization = "PowerDNS"
 .# Abstract
 
 Due to a combination of unfortunate wording in earlier documents, aggressive use of NSEC(3) records may deny names far beyond the intended lifetime of a denial.
-This document changes the definition of the NSEC(3) TTL to correct that situation.
+This document changes the definition of the NSEC(3) TTL given in responses from authoritative servers and imputed by caching resolvers.
 This document updates RFC 4034, RFC 4035, and RFC 5155.
 
 {mainmatter}
@@ -55,11 +55,16 @@ This document lives [on GitHub](https://github.com/PowerDNS/draft-dnsop-nsec-ttl
 
 ]
 
-[@!RFC2308] defines that the SOA TTL to be used in negative answers (NXDOMAIN or NODATA) is 
+[@!RFC2308] defines that the TTL of the SOA record that nust be returned in negative answers (NXDOMAIN or NODATA):
 
-> the minimum of the MINIMUM field of the SOA record and the TTL of the SOA itself
-
-Thus, if the TTL of the SOA in the zone is lower than the SOA MINIMUM value (the last number in a SOA record), the negative TTL for that zone is lower than the SOA MINIMUM value.
+~~~
+   The TTL of this
+   record is set from the minimum of the MINIMUM field of the SOA record
+   and the TTL of the SOA itself, and indicates how long a resolver may
+   cache the negative answer.
+~~~
+   
+Note that the first part of this text is a requirement on the authoritative server. However, the second part can also can be interpreted as suggesting that resolvers are allowed to choose to use the MINIMUM field as the cached TTL for the negative answer if the authoritative server does not follow the first part.
 
 However, [@!RFC4034] section 4 has this unfortunate text:
 
