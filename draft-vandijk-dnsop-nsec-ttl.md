@@ -1,5 +1,5 @@
 %%%
-title = "NSEC(3) TTLs and NSEC Aggressive Use"
+title = "NSEC and NSEC3 TTLs and NSEC Aggressive Use"
 abbrev = "nsec-ttl"
 docName = "draft-ietf-dnsop-nsec-ttl-02"
 category = "std"
@@ -35,8 +35,8 @@ organization = "PowerDNS"
 
 .# Abstract
 
-Due to a combination of unfortunate wording in earlier documents, aggressive use of NSEC(3) records may deny names far beyond the intended lifetime of a denial.
-This document changes the definition of the NSEC(3) TTL to correct that situation.
+Due to a combination of unfortunate wording in earlier documents, aggressive use of NSEC and NSEC3 records may deny names far beyond the intended lifetime of a denial.
+This document changes the definition of the NSEC and NSEC3 TTL to correct that situation.
 This document updates RFC 4034, RFC 4035, and RFC 5155.
 
 {mainmatter}
@@ -81,21 +81,21 @@ This text, while referring to RFC2308, can cause NSEC records to have much highe
 >
 > A resolver that supports aggressive use of NSEC and NSEC3 SHOULD reduce the TTL of NSEC and NSEC3 records to match the SOA.MINIMUM field in the authority section of a negative response, if SOA.MINIMUM is smaller.
 
-But the NSEC(3) RRs should, per RFC4034, already be at the MINIMUM TTL, which means this advice would never actually change the TTL used for the NSEC(3) RRs.
+But the NSEC and NSEC3 RRs should, according to RFC4034 and RFC5155, already be at the value of the MINIMUM field in the SOA. Thus, the advice from RFC8198 would not actually change the TTL used for the NSEC and NSEC3 RRs for authoritative servers that follow the RFCs.
 
 As a theoretical exercise, consider a TLD named `.example` with a SOA record like this:
 
 `example.    900 IN  SOA primary.example. hostmaster.example. 1 1800 900 604800 86400`
 
 The SOA record has a 900 second TTL, and a 86400 MINIMUM TTL.
-Negative responses from this zone have a 900 second TTL, but the NSEC(3) records in those negative responses have a 86400 TTL.
-If a resolver were to use those NSEC(3)s aggressively, they would be considered valid for a day, instead of the intended 15 minutes.
+Negative responses from this zone have a 900 second TTL, but the NSEC or NSEC3 records in those negative responses have a 86400 TTL.
+If a resolver were to use those NSEC or NSEC3 records aggressively, they would be considered valid for a day, instead of the intended 15 minutes.
 
 # Conventions and Definitions
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 [@!RFC2119] [@RFC8174] when, and only when, they appear in all capitals, as shown here.
 
-# NSEC(3) TTL changes
+# NSEC and NSEC3 TTL changes
 
 ## Updates to RFC4034
 
@@ -153,13 +153,13 @@ That way, the TTL used for aggressive NSEC use matches the SOA TTL for negative 
 
 ## A Note On Wildcards
 
-Validating resolvers consider an expanded wildcard valid for the wildcard's TTL, capped by the TTLs of the NSEC(3) proof that shows that the wildcard expansion is legal.
-Thus, changing the TTL of NSEC(3) records (explicitly, or by implementation of this document, implicitly) might affect (shorten) the lifetime of wildcards.
+Validating resolvers consider an expanded wildcard valid for the wildcard's TTL, capped by the TTLs of the NSEC and NSEC3 proof that shows that the wildcard expansion is legal.
+Thus, changing the TTL of NSEC or NSEC3 records (explicitly, or by implementation of this document, implicitly) might affect (shorten) the lifetime of wildcards.
 
 # Security Considerations
 
-An attacker can prevent future records from appearing in a cache by seeding the cache with queries that cause NSEC(3) responses to be cached, for aggressive use purposes.
-This document reduces the impact of that attack in cases where the NSEC(3) TTL is higher than the zone operator intended.
+An attacker can prevent future records from appearing in a cache by seeding the cache with queries that cause NSEC or NSEC3 responses to be cached, for aggressive use purposes.
+This document reduces the impact of that attack in cases where the NSEC or NSEC3 TTL is higher than the zone operator intended.
 
 # IANA Considerations
 
