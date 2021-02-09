@@ -223,4 +223,14 @@ From draft-ietf-dnsop-nsec-ttl-00 to draft-ietf-dnsop-nsec-ttl-02:
 {numbered="false"}
 # Acknowledgements
 
-Ralph Dolmans helpfully pointed out that fixing this in RFC8198 is only possible for negative (NXDOMAIN/NODATA) responses, and not for wildcard responses. Warren Kumari gracefully acknowledged that the current behaviour of RFC8198, in context of the NSEC TTL defined in RFC4034, is not the intended behaviour. Matthijs Mekking provided additional text explaining why this document cannot simply update RFC8198. Vladimir Cunat pointed out that the effect on wildcards should be made explicit. Paul Hoffman, Matt Nordhoff, and Josh Soref provided helpful corrections as native speakers.
+This document was made possible with the help of the following people:
+
+* Ralph Dolmans
+* Warren Kumari
+* Matthijs Mekking
+* Vladimir Cunat
+* Matt Nordhoff
+* Josh Soref
+* Tim Wicinski
+
+The author would like to explicitly thank Paul Hoffman for extensive reviews, text contributions, and help in navigating WG comments.
