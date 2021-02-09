@@ -189,6 +189,10 @@ Implemented in BIND 9.16 and up, to be released early 2021 https://mailarchive.i
 
 Implemented in Knot DNS 3.1, to be released in 2021 https://gitlab.nic.cz/knot/knot-dns/-/merge_requests/1219 .
 
+Implemented in ldns, patch under review https://github.com/NLnetLabs/ldns/pull/118
+
+Implementation status is tracked at https://trac.ietf.org/trac/dnsop/wiki/draft-ietf-dnsop-nsec-ttl
+
 # Document history
 
 [RFC editor: please remove this section before publication.]
