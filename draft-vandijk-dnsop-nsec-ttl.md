@@ -154,14 +154,14 @@ Compared to the original text, the third paragraph is removed, and the fourth pa
 
 Some DNSSEC signer implementations might not (re-)sign whole zones in one go, instead spreading the work of updating inception/expiration times over some period.
 Such implementations would not be able to update all NSEC or NSEC3 records in the zone instantly either.
-To aid these implementations, we additionally specify the following separately from the document updates.
+To aid these implementations, we additionally specify the following:
 
 > If an implementation cannot update all NSEC or NSEC3 TTLs after a SOA change immediately, it SHOULD endeavour to achieve this consistency in a reasonable time frame.
 
 # Zone Operator Considerations
 
 If signers & DNS servers for a zone cannot immediately be updated to conform to this document, zone operators are encouraged to consider setting their SOA record TTL and the SOA MINIMUM field to the same value.
-That way, the TTL used for aggressive NSEC use matches the SOA TTL for negative responses.
+That way, the TTL used for aggressive NSEC and NSEC3 use matches the SOA TTL for negative responses.
 
 ## A Note On Wildcards
 
