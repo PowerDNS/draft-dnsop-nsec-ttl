@@ -135,16 +135,25 @@ This is updated to say:
 
 > o  The TTL value for any NSEC3 RR SHOULD be the lesser of the MINIMUM field of the zone SOA RR and the TTL of the zone SOA RR itself.
 
-## No updates to RFC8198
+## Updates to RFC8198
 
-Instead of updating three documents, it would have been preferable to update one.
-[@RFC8198] says:
+[@!RFC8198] section 5.4 (Consideration on TTL) is completely replaced by the following text:
 
-> With DNSSEC and aggressive use of DNSSEC-validated cache, the TTL of the NSEC/NSEC3 record and the SOA.MINIMUM field are the authoritative statement of how quickly a name can start working within a zone.
+>    The TTL value of negative information is especially important,
+>    because newly added domain names cannot be used while the negative
+>    information is effective.
+>
+>    Section 5 of [RFC2308] suggests a maximum default negative cache TTL
+>    value of 3 hours (10800).  It is RECOMMENDED that validating
+>    resolvers limit the maximum effective TTL value of negative responses
+>    (NSEC/NSEC3 RRs) to this same value.
+>
+>    A resolver that supports aggressive use of NSEC and NSEC3 MAY
+>    limit the TTL of NSEC and NSEC3 records to the lesser of the SOA.MINIMUM
+>    field and the TTL of the SOA in a response, if present.
+>    It MAY also use a previously cached SOA for a zone to find these values.
 
-Here, the SOA.MINIMUM field cannot be changed to "the minimum/lesser of the SOA.MINIMUM field and the SOA TTL" because the resolver may not have the SOA RRset in cache.
-Because of that, this document cannot get away with updating just [@RFC8198].
-However, if authoritative servers follow the updates from this document, this should not make a difference, as the TTL of the NSEC/NSEC3 record is already set to the minimum value.
+Compared to the original text, the third paragraph is removed, and the fourth paragraph is updated to allow resolvers to also take the lesser of the two values (SOA TTL and SOA MINIMUM).
 
 # Zone Operator Considerations
 
@@ -199,6 +208,8 @@ From draft-ietf-dnsop-nsec-ttl-00 to draft-ietf-dnsop-nsec-ttl-01:
 From draft-ietf-dnsop-nsec-ttl-00 to draft-ietf-dnsop-nsec-ttl-02:
 
 * updated the second bit of wrong text in 5155
+* document now updates resolver behaviour in 8198
+* lots of extra text to clarify what behaviour goes where (thanks Paul Hoffman)
 
 {numbered="false"}
 # Acknowledgements
