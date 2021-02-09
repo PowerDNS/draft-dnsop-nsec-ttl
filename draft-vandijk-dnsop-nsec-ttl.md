@@ -106,7 +106,7 @@ This is updated to say:
 
 Where [@!RFC4035] says:
 
-> The TTL value for each NSEC RR SHOULD be the same as the minimum TTL value field in the zone SOA RR.
+> The TTL value for any NSEC RR SHOULD be the same as the minimum TTL value field in the zone SOA RR.
 
 This is updated to say:
 
@@ -124,7 +124,7 @@ This is updated to say:
 
 Where [@!RFC5155] says:
 
-> o  The TTL value for each NSEC3 RR SHOULD be the same as the minimum TTL value field in the zone SOA RR.
+> o  The TTL value for any NSEC3 RR SHOULD be the same as the minimum TTL value field in the zone SOA RR.
 
 This is updated to say:
 
