@@ -3,7 +3,7 @@ title = "NSEC and NSEC3 TTLs and NSEC Aggressive Use"
 abbrev = "nsec-ttl"
 docName = "draft-ietf-dnsop-nsec-ttl-02+"
 category = "std"
-updates = [4034, 4035, 5155]
+updates = [4034, 4035, 5155, 8198]
 
 ipr = "trust200902"
 area = "General"
@@ -37,7 +37,7 @@ organization = "PowerDNS"
 
 Due to a combination of unfortunate wording in earlier documents, aggressive use of NSEC and NSEC3 records may deny names far beyond the intended lifetime of a denial.
 This document changes the definition of the NSEC and NSEC3 TTL to correct that situation.
-This document updates RFC 4034, RFC 4035, and RFC 5155.
+This document updates RFC 4034, RFC 4035, RFC 5155, and RFC8198.
 
 {mainmatter}
 
