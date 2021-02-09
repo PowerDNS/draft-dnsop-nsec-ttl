@@ -1,5 +1,5 @@
 %%%
-title = "NSEC(3) TTLs and NSEC Aggressive Use"
+title = "NSEC and NSEC3 TTLs and NSEC Aggressive Use"
 abbrev = "nsec-ttl"
 docName = "draft-ietf-dnsop-nsec-ttl-02+"
 category = "std"
@@ -35,8 +35,8 @@ organization = "PowerDNS"
 
 .# Abstract
 
-Due to a combination of unfortunate wording in earlier documents, aggressive use of NSEC(3) records may deny names far beyond the intended lifetime of a denial.
-This document changes the definition of the NSEC(3) TTL to correct that situation.
+Due to a combination of unfortunate wording in earlier documents, aggressive use of NSEC and NSEC3 records may deny names far beyond the intended lifetime of a denial.
+This document changes the definition of the NSEC and NSEC3 TTL to correct that situation.
 This document updates RFC 4034, RFC 4035, and RFC 5155.
 
 {mainmatter}
@@ -55,11 +55,18 @@ This document lives [on GitHub](https://github.com/PowerDNS/draft-dnsop-nsec-ttl
 
 ]
 
-[@!RFC2308] defines that the SOA TTL to be used in negative answers (NXDOMAIN or NODATA) is 
+[@!RFC2308] defines the TTL of the SOA record that must be returned in negative answers (NXDOMAIN or NODATA):
 
-> the minimum of the MINIMUM field of the SOA record and the TTL of the SOA itself
+~~~
+   The TTL of this
+   record is set from the minimum of the MINIMUM field of the SOA record
+   and the TTL of the SOA itself, and indicates how long a resolver may
+   cache the negative answer.
+~~~
 
-Thus, if the TTL of the SOA in the zone is lower than the SOA MINIMUM value (the last number in a SOA record), the negative TTL for that zone is lower than the SOA MINIMUM value.
+Thus, if the TTL of the SOA in the zone is lower than the SOA MINIMUM value (the last number in the SOA record),
+the authoritative server sends that lower value as the TTL of the returned SOA record.
+The resolver always uses the TTL of the returned SOA record when setting the negative TTL in its cache.
 
 However, [@!RFC4034] section 4 has this unfortunate text:
 
@@ -74,21 +81,21 @@ This text, while referring to RFC2308, can cause NSEC records to have much highe
 >
 > A resolver that supports aggressive use of NSEC and NSEC3 SHOULD reduce the TTL of NSEC and NSEC3 records to match the SOA.MINIMUM field in the authority section of a negative response, if SOA.MINIMUM is smaller.
 
-But the NSEC(3) RRs should, per RFC4034, already be at the MINIMUM TTL, which means this advice would never actually change the TTL used for the NSEC(3) RRs.
+But the NSEC and NSEC3 RRs should, according to RFC4034 and RFC5155, already be at the value of the MINIMUM field in the SOA. Thus, the advice from RFC8198 would not actually change the TTL used for the NSEC and NSEC3 RRs for authoritative servers that follow the RFCs.
 
 As a theoretical exercise, consider a TLD named `.example` with a SOA record like this:
 
 `example.    900 IN  SOA primary.example. hostmaster.example. 1 1800 900 604800 86400`
 
 The SOA record has a 900 second TTL, and a 86400 MINIMUM TTL.
-Negative responses from this zone have a 900 second TTL, but the NSEC(3) records in those negative responses have a 86400 TTL.
-If a resolver were to use those NSEC(3)s aggressively, they would be considered valid for a day, instead of the intended 15 minutes.
+Negative responses from this zone have a 900 second TTL, but the NSEC or NSEC3 records in those negative responses have a 86400 TTL.
+If a resolver were to use those NSEC or NSEC3 records aggressively, they would be considered valid for a day, instead of the intended 15 minutes.
 
 # Conventions and Definitions
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 [@!RFC2119] [@RFC8174] when, and only when, they appear in all capitals, as shown here.
 
-# NSEC(3) TTL changes
+# NSEC and NSEC3 TTL changes
 
 ## Updates to RFC4034
 
@@ -98,7 +105,7 @@ Where [@!RFC4034] says:
 
 This is updated to say:
 
-> The NSEC RR SHOULD have the same TTL value as the lesser of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
+> The TTL of the NSEC RR that is returned SHOULD be the lesser of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
 
 ## Updates to RFC4035
 
@@ -108,7 +115,7 @@ Where [@!RFC4035] says:
 
 This is updated to say:
 
-> The TTL value for any NSEC RR SHOULD be the same TTL value as the lesser of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
+> The TTL of the NSEC RR that is returned SHOULD be the lesser of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
 
 ## Updates to RFC5155
 
@@ -118,7 +125,7 @@ Where [@!RFC5155] says:
 
 This is updated to say:
 
-> The NSEC3 RR SHOULD have the same TTL value as the lesser of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
+> The TTL of the NSEC3 RR that is returned SHOULD be the lesser of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
 
 Where [@!RFC5155] says:
 
@@ -126,7 +133,7 @@ Where [@!RFC5155] says:
 
 This is updated to say:
 
-> o  The TTL value for any NSEC3 RR SHOULD be the same as the lesser of the MINIMUM field of the zone SOA RR and the TTL of the zone SOA RR itself.
+> o  The TTL value for any NSEC3 RR SHOULD be the lesser of the MINIMUM field of the zone SOA RR and the TTL of the zone SOA RR itself.
 
 ## No updates to RFC8198
 
@@ -146,13 +153,13 @@ That way, the TTL used for aggressive NSEC use matches the SOA TTL for negative 
 
 ## A Note On Wildcards
 
-Validating resolvers consider an expanded wildcard valid for the wildcard's TTL, capped by the TTLs of the NSEC(3) proof that shows that the wildcard expansion is legal.
-Thus, changing the TTL of NSEC(3) records (explicitly, or by implementation of this document, implicitly) might affect (shorten) the lifetime of wildcards.
+Validating resolvers consider an expanded wildcard valid for the wildcard's TTL, capped by the TTLs of the NSEC and NSEC3 proof that shows that the wildcard expansion is legal.
+Thus, changing the TTL of NSEC or NSEC3 records (explicitly, or by implementation of this document, implicitly) might affect (shorten) the lifetime of wildcards.
 
 # Security Considerations
 
-An attacker can prevent future records from appearing in a cache by seeding the cache with queries that cause NSEC(3) responses to be cached, for aggressive use purposes.
-This document reduces the impact of that attack in cases where the NSEC(3) TTL is higher than the zone operator intended.
+An attacker can prevent future records from appearing in a cache by seeding the cache with queries that cause NSEC or NSEC3 responses to be cached, for aggressive use purposes.
+This document reduces the impact of that attack in cases where the NSEC or NSEC3 TTL is higher than the zone operator intended.
 
 # IANA Considerations
 
