@@ -37,7 +37,7 @@ organization = "PowerDNS"
 
 Due to a combination of unfortunate wording in earlier documents, aggressive use of NSEC and NSEC3 records may deny names far beyond the intended lifetime of a denial.
 This document changes the definition of the NSEC and NSEC3 TTL to correct that situation.
-This document updates RFC 4034, RFC 4035, RFC 5155, and RFC8198.
+This document updates RFC 4034, RFC 4035, RFC 5155, and RFC 8198.
 
 {mainmatter}
 
