@@ -57,12 +57,7 @@ This document lives [on GitHub](https://github.com/PowerDNS/draft-dnsop-nsec-ttl
 
 [@!RFC2308] defines the TTL of the SOA record that must be returned in negative answers (NXDOMAIN or NODATA):
 
-~~~
-   The TTL of this
-   record is set from the minimum of the MINIMUM field of the SOA record
-   and the TTL of the SOA itself, and indicates how long a resolver may
-   cache the negative answer.
-~~~
+> The TTL of this record is set from the minimum of the MINIMUM field of the SOA record and the TTL of the SOA itself, and indicates how long a resolver may cache the negative answer.
 
 Thus, if the TTL of the SOA in the zone is lower than the SOA MINIMUM value (the last number in the SOA record),
 the authoritative server sends that lower value as the TTL of the returned SOA record.
