@@ -111,7 +111,7 @@ This is updated to say:
 
 Where [@!RFC4035] says:
 
-> The TTL value for any NSEC RR SHOULD be the same as the minimum TTL value field in the zone SOA RR.
+> The TTL value for each NSEC RR SHOULD be the same as the minimum TTL value field in the zone SOA RR.
 
 This is updated to say:
 
@@ -129,11 +129,11 @@ This is updated to say:
 
 Where [@!RFC5155] says:
 
-> o  The TTL value for any NSEC3 RR SHOULD be the same as the minimum TTL value field in the zone SOA RR.
+> o  The TTL value for each NSEC3 RR SHOULD be the same as the minimum TTL value field in the zone SOA RR.
 
 This is updated to say:
 
-> o  The TTL value for any NSEC3 RR SHOULD be the lesser of the MINIMUM field of the zone SOA RR and the TTL of the zone SOA RR itself.
+> o  The TTL value for each NSEC3 RR SHOULD be the lesser of the MINIMUM field of the zone SOA RR and the TTL of the zone SOA RR itself.
 
 ## Updates to RFC8198
 
@@ -210,6 +210,7 @@ From draft-ietf-dnsop-nsec-ttl-00 to draft-ietf-dnsop-nsec-ttl-02:
 * updated the second bit of wrong text in 5155
 * document now updates resolver behaviour in 8198
 * lots of extra text to clarify what behaviour goes where (thanks Paul Hoffman)
+* replace 'any' with 'each' (thanks Duane)
 
 {numbered="false"}
 # Acknowledgements
