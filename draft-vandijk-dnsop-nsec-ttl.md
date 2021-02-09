@@ -1,7 +1,7 @@
 %%%
 title = "NSEC and NSEC3 TTLs and NSEC Aggressive Use"
 abbrev = "nsec-ttl"
-docName = "draft-ietf-dnsop-nsec-ttl-02+"
+docName = "draft-ietf-dnsop-nsec-ttl-03"
 category = "std"
 updates = [4034, 4035, 5155, 8198]
 
@@ -12,7 +12,7 @@ keyword = ["Internet-Draft"]
 
 [seriesInfo]
 name = "Internet-Draft"
-value = "draft-ietf-dnsop-nsec-ttl-02+"
+value = "draft-ietf-dnsop-nsec-ttl-03"
 stream = "IETF"
 status = "standard"
 
