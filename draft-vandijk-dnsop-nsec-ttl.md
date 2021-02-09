@@ -105,7 +105,7 @@ Where [@!RFC4034] says:
 
 This is updated to say:
 
-> The TTL of the NSEC RR that is returned SHOULD be the lesser of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
+> The TTL of the NSEC RR that is returned MUST be the lesser of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
 
 ## Updates to RFC4035
 
@@ -115,7 +115,7 @@ Where [@!RFC4035] says:
 
 This is updated to say:
 
-> The TTL of the NSEC RR that is returned SHOULD be the lesser of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
+> The TTL of the NSEC RR that is returned MUST be the lesser of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
 
 ## Updates to RFC5155
 
@@ -125,7 +125,7 @@ Where [@!RFC5155] says:
 
 This is updated to say:
 
-> The TTL of the NSEC3 RR that is returned SHOULD be the lesser of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
+> The TTL of the NSEC3 RR that is returned MUST be the lesser of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308].
 
 Where [@!RFC5155] says:
 
@@ -133,7 +133,7 @@ Where [@!RFC5155] says:
 
 This is updated to say:
 
-> o  The TTL value for each NSEC3 RR SHOULD be the lesser of the MINIMUM field of the zone SOA RR and the TTL of the zone SOA RR itself.
+> o  The TTL value for each NSEC3 RR MUST be the lesser of the MINIMUM field of the zone SOA RR and the TTL of the zone SOA RR itself.
 
 ## Updates to RFC8198
 
@@ -154,6 +154,14 @@ This is updated to say:
 >    It MAY also use a previously cached SOA for a zone to find these values.
 
 Compared to the original text, the third paragraph is removed, and the fourth paragraph is updated to allow resolvers to also take the lesser of the two values (SOA TTL and SOA MINIMUM).
+
+## A note on incremental signers
+
+Some DNSSEC signer implementations might not (re-)sign whole zones in one go, instead spreading the work of updating inception/expiration times over some period.
+Such implementations would not be able to update all NSEC or NSEC3 records in the zone instantly either.
+To aid these implementations, we additionally specify the following separately from the document updates.
+
+> If an implementation cannot update all NSEC or NSEC3 TTLs after a SOA change immediately, it SHOULD endeavour to achieve this consistency in a reasonable time frame.
 
 # Zone Operator Considerations
 
@@ -211,6 +219,7 @@ From draft-ietf-dnsop-nsec-ttl-00 to draft-ietf-dnsop-nsec-ttl-02:
 * document now updates resolver behaviour in 8198
 * lots of extra text to clarify what behaviour goes where (thanks Paul Hoffman)
 * replace 'any' with 'each' (thanks Duane)
+* upgraded requirement level to MUST, plus a note on incremental signers
 
 {numbered="false"}
 # Acknowledgements
