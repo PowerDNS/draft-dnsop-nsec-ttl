@@ -148,7 +148,7 @@ This is updated to say:
 >    field and the TTL of the SOA in a response, if present.
 >    It MAY also use a previously cached SOA for a zone to find these values.
 
-Compared to the original text, the third paragraph is removed, and the fourth paragraph is updated to allow resolvers to also take the lesser of the two values (SOA TTL and SOA MINIMUM).
+(The third paragraph of the original is removed, and the fourth paragraph is updated to allow resolvers to also take the lesser of the SOA TTL and SOA MINIMUM.)
 
 ## A note on incremental signers
 
@@ -156,7 +156,7 @@ Some DNSSEC signer implementations might not (re-)sign whole zones in one go, in
 Such implementations would not be able to update all NSEC or NSEC3 records in the zone instantly either.
 To aid these implementations, we additionally specify the following:
 
-> If an implementation cannot update all NSEC or NSEC3 TTLs after a SOA change immediately, it SHOULD endeavour to achieve this consistency in a reasonable time frame.
+> If an implementation cannot update all NSEC or NSEC3 TTLs after a SOA change immediately, it MUST still attempt to do so as soon as possible during the signing process.
 
 # Zone Operator Considerations
 
