@@ -212,9 +212,12 @@ From draft-ietf-dnsop-nsec-ttl-00 to draft-ietf-dnsop-nsec-ttl-01:
 * added Implementation note from Knot, expanded the BIND one with the GitLab MR URL
 * reduced requirement level from MUST to SHOULD, like the original texts
 
-From draft-ietf-dnsop-nsec-ttl-00 to draft-ietf-dnsop-nsec-ttl-02:
+From draft-ietf-dnsop-nsec-ttl-01 to draft-ietf-dnsop-nsec-ttl-02:
 
 * updated the second bit of wrong text in 5155
+
+From draft-ietf-dnsop-nsec-ttl-02 to draft-ietf-dnsop-nsec-ttl-03:
+
 * document now updates resolver behaviour in 8198
 * lots of extra text to clarify what behaviour goes where (thanks Paul Hoffman)
 * replace 'any' with 'each' (thanks Duane)
