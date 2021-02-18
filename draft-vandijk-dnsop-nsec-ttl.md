@@ -220,6 +220,11 @@ From draft-ietf-dnsop-nsec-ttl-02 to draft-ietf-dnsop-nsec-ttl-03:
 * replace 'any' with 'each' (thanks Duane)
 * upgraded requirement level to MUST, plus a note on incremental signers
 
+From draft-ietf-dnsop-nsec-ttl-03 to draft-ietf-dnsop-nsec-ttl-04:
+
+* the 'incremental signer exception' is now part of all relevant document updates
+* added an explanation for the upgraded requirement level
+
 {numbered="false"}
 # Acknowledgements
 
