@@ -92,6 +92,11 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 # NSEC and NSEC3 TTL changes
 
+The existing texts in [@!RFC4034], [@!RFC4035], and [@!RFC5155] use the SHOULD requirement level, but they were written when [@!RFC4035] still said 'However, it seems prudent for resolvers to avoid blocking new authoritative data or synthesizing new data on their own'.
+[@!RFC8198] updated that text to contain 'DNSSEC-enabled validating resolvers SHOULD use wildcards and NSEC/NSEC3 resource records to generate positive and negative responses until the effective TTLs or signatures for those records expire'.
+This means that correctness of NSEC and NSEC3 records, and their TTLs, has become much more important.
+Because of that, the updates in this document upgrade the requirement level to MUST.
+
 ## Updates to RFC4034
 
 Where [@!RFC4034] says:
