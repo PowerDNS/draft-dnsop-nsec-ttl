@@ -36,7 +36,7 @@ organization = "PowerDNS"
 .# Abstract
 
 Due to a combination of unfortunate wording in earlier documents, aggressive use of NSEC and NSEC3 records may deny names far beyond the intended lifetime of a denial.
-This document changes the definition of the NSEC and NSEC3 TTL to correct that situation.
+This document changes the definition of the NSEC and NSEC3 TTL (Time To Live) to correct that situation.
 This document updates RFC 4034, RFC 4035, RFC 5155, and RFC 8198.
 
 {mainmatter}
@@ -55,7 +55,7 @@ This document lives [on GitHub](https://github.com/PowerDNS/draft-dnsop-nsec-ttl
 
 ]
 
-[@!RFC2308] defines the TTL of the SOA record that must be returned in negative answers (NXDOMAIN or NODATA):
+[@!RFC2308] defines the TTL of the SOA (Start Of Authority) record that must be returned in negative answers (NXDOMAIN or NODATA):
 
 > The TTL of this record is set from the minimum of the MINIMUM field of the SOA record and the TTL of the SOA itself, and indicates how long a resolver may cache the negative answer.
 
