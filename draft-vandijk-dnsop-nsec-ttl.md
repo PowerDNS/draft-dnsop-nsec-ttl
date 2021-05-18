@@ -167,7 +167,7 @@ Thus, changing the TTL of NSEC or NSEC3 records (explicitly, or by implementatio
 
 # Security Considerations
 
-An attacker can prevent future records from appearing in a cache by seeding the cache with queries that cause NSEC or NSEC3 responses to be cached, for aggressive use purposes.
+An attacker can delay future records from appearing in a cache by seeding the cache with queries that cause NSEC or NSEC3 responses to be cached, for aggressive use purposes.
 This document reduces the impact of that attack in cases where the NSEC or NSEC3 TTL is higher than the zone operator intended.
 
 # IANA Considerations
