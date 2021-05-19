@@ -35,7 +35,7 @@ organization = "PowerDNS"
 
 .# Abstract
 
-Due to a combination of unfortunate wording in earlier documents, aggressive use of NSEC and NSEC3 records may deny names far beyond the intended lifetime of a denial.
+Due to a combination of unfortunate wording in earlier documents, aggressive use of NSEC and NSEC3 records may deny the existence of names far beyond the intended lifetime of a denial.
 This document changes the definition of the NSEC and NSEC3 TTL (Time To Live) to correct that situation.
 This document updates RFC 4034, RFC 4035, RFC 5155, and RFC 8198.
 
@@ -157,17 +157,17 @@ This is updated to say:
 
 # Zone Operator Considerations
 
-If signers & DNS servers for a zone cannot immediately be updated to conform to this document, zone operators are encouraged to consider setting their SOA record TTL and the SOA MINIMUM field to the same value.
+If signers and DNS servers for a zone cannot immediately be updated to conform to this document, zone operators are encouraged to consider setting their SOA record TTL and the SOA MINIMUM field to the same value.
 That way, the TTL used for aggressive NSEC and NSEC3 use matches the SOA TTL for negative responses.
 
 ## A Note On Wildcards
 
-Validating resolvers consider an expanded wildcard valid for the wildcard's TTL, capped by the TTLs of the NSEC and NSEC3 proof that shows that the wildcard expansion is legal.
+Validating resolvers consider an expanded wildcard valid for the wildcard's TTL, capped by the TTLs of the NSEC or NSEC3 proof that shows that the wildcard expansion is legal.
 Thus, changing the TTL of NSEC or NSEC3 records (explicitly, or by implementation of this document, implicitly) might affect (shorten) the lifetime of wildcards.
 
 # Security Considerations
 
-An attacker can delay future records from appearing in a cache by seeding the cache with queries that cause NSEC or NSEC3 responses to be cached, for aggressive use purposes.
+An attacker can delay future records from appearing in a cache by seeding the cache with queries that cause NSEC or NSEC3 responses to be cached for aggressive use purposes.
 This document reduces the impact of that attack in cases where the NSEC or NSEC3 TTL is higher than the zone operator intended.
 
 # IANA Considerations
