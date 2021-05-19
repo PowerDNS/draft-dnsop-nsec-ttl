@@ -125,7 +125,7 @@ Where [@!RFC5155] says:
 
 This is updated to say:
 
-> The TTL of the NSEC3 RR that is returned MUST be the lesser of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308]. A signer MAY cause the TTL of the NSEC RR to have a deviating value after the SOA record has been updated, to allow for an incremental update of the NSEC chain.
+> The TTL of the NSEC3 RR that is returned MUST be the lesser of the MINIMUM field of the SOA record and the TTL of the SOA itself.  This matches the definition of the TTL for negative responses in [@!RFC2308]. A signer MAY cause the TTL of the NSEC3 RR to have a deviating value after the SOA record has been updated, to allow for an incremental update of the NSEC chain.
 
 Where [@!RFC5155] says:
 
