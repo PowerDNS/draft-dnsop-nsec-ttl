@@ -160,7 +160,7 @@ This is updated to say:
 If signers and DNS servers for a zone cannot immediately be updated to conform to this document, zone operators are encouraged to consider setting their SOA record TTL and the SOA MINIMUM field to the same value.
 That way, the TTL used for aggressive NSEC and NSEC3 use matches the SOA TTL for negative responses.
 
-Note that some signers might use the SOA TTL or MINIMUM as a default for other values, like the TTL for DNSKEY records.
+Note that some signers might use the SOA TTL or MINIMUM as a default for other values, such as the TTL for DNSKEY records.
 Operators should consult documentation before changing values.
 
 ## A Note On Wildcards
