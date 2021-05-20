@@ -228,6 +228,11 @@ From draft-ietf-dnsop-nsec-ttl-03 to draft-ietf-dnsop-nsec-ttl-04:
 * the 'incremental signer exception' is now part of all relevant document updates
 * added an explanation for the upgraded requirement level
 
+From draft-ietf-dnsop-nsec-ttl-04 to draft-ietf-dnsop-nsec-ttl-05:
+
+* various minor rewordings (IESG review)
+* added a note on the secondary impact of changing the SOA TTL and/or MINIMUM (IESG review)
+
 {numbered="false"}
 # Acknowledgements
 
