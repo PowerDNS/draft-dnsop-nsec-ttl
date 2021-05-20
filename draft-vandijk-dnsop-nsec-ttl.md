@@ -230,7 +230,7 @@ From draft-ietf-dnsop-nsec-ttl-03 to draft-ietf-dnsop-nsec-ttl-04:
 
 From draft-ietf-dnsop-nsec-ttl-04 to draft-ietf-dnsop-nsec-ttl-05:
 
-* various minor rewordings (IESG review)
+* various minor rewordings (from IESG review, and things I spotted while handling IESG review comments)
 * added a note on the secondary impact of changing the SOA TTL and/or MINIMUM (IESG review)
 
 {numbered="false"}
