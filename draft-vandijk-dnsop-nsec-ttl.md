@@ -133,7 +133,7 @@ Where [@!RFC5155] says:
 
 This is updated to say:
 
-> o  The TTL value for each NSEC3 RR MUST be the lesser of the MINIMUM field of the zone SOA RR and the TTL of the zone SOA RR itself. A signer MAY cause the TTL of the NSEC RR to have a deviating value after the SOA record has been updated, to allow for an incremental update of the NSEC chain.
+> o  The TTL value for each NSEC3 RR MUST be the lesser of the MINIMUM field of the zone SOA RR and the TTL of the zone SOA RR itself. Because some signers incrementally update the NSEC3 chain, a transient inconsistency between the observed and expected TTL MAY exist.
 
 ## Updates to RFC8198
 
